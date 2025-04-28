@@ -5,6 +5,11 @@
       <config />
     </shared>
     <layouts>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_game.xml">
+        <config>
+          <theme>@style/Theme.PMA_Miniproject_MED_SEM2</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
         <config>
           <theme>@style/Theme.PMA_Miniproject_MED_SEM2</theme>
@@ -28,7 +33,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=LocalEmulator, isTemplate=false, identifier=path=C:\Users\Tobias\.android\avd\Medium_Phone.avd)]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=LocalEmulator, isTemplate=false, identifier=path=C:\Users\Bruger\.android\avd\Medium_Phone.avd)]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -37,8 +42,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="layoutResourceFile" />
         <option value="Class" />
+        <option value="layoutResourceFile" />
       </list>
     </option>
   </component>
@@ -77,9 +82,10 @@
     "RunOnceActivity.readMode.enableVisualFormatting": "true",
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
-    "git-widget-placeholder": "TB-MainMenu",
+    "git-widget-placeholder": "<unknown>",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Tobias/Documents/GitHub/PMA_Miniproject-MED-SEM2"
+    "last_opened_file_path": "C:/Users/Tobias/Documents/GitHub/PMA_Miniproject-MED-SEM2",
+    "settings.editor.selected.configurable": "reference.settingsdialog.IDE.editor.colors.Language Defaults"
   }
 }]]></component>
   <component name="RunManager">
@@ -172,12 +178,12 @@
       <map>
         <entry key="com.example.PMA_Miniproject_MED_SEM2">
           <value>
-            <CheckInfo lastCheckTimestamp="1745330148287" />
+            <CheckInfo lastCheckTimestamp="1745768157077" />
           </value>
         </entry>
         <entry key="com.example.PMA_Miniproject_MED_SEM2.test">
           <value>
-            <CheckInfo lastCheckTimestamp="1745330148285" />
+            <CheckInfo lastCheckTimestamp="1745768157077" />
           </value>
         </entry>
       </map>
