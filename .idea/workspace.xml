@@ -42,8 +42,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="layoutResourceFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -178,12 +178,12 @@
       <map>
         <entry key="com.example.PMA_Miniproject_MED_SEM2">
           <value>
-            <CheckInfo lastCheckTimestamp="1745768157077" />
+            <CheckInfo lastCheckTimestamp="1745867341763" />
           </value>
         </entry>
         <entry key="com.example.PMA_Miniproject_MED_SEM2.test">
           <value>
-            <CheckInfo lastCheckTimestamp="1745768157077" />
+            <CheckInfo lastCheckTimestamp="1745867341767" />
           </value>
         </entry>
       </map>

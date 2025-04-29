@@ -13,6 +13,8 @@ import android.graphics.Canvas;
 import android.view.View;
 
 public class GamePanel extends View implements Runnable {
+    // this handles how the game is displayed and run
+    //it also calls for the playmanager class.
     private Thread gameThread;
     private final int FPS = 60;
     private PlayManager playManager; // call playmanager Class
@@ -56,5 +58,9 @@ public class GamePanel extends View implements Runnable {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         playManager.draw(canvas);
+    }
+
+    public void resetItems(){
+        PlayManager.fillGridCompactly();
     }
 }
