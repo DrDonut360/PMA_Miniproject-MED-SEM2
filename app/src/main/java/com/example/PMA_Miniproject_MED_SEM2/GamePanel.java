@@ -19,7 +19,9 @@ public class GamePanel extends View implements Runnable {
     private final int FPS = 60;
     private PlayManager playManager; // call playmanager Class
 
+
     public GamePanel(Context context) {
+
         super(context);
         playManager = new PlayManager(this); // Pass View if needed
         launchGame();
@@ -61,6 +63,6 @@ public class GamePanel extends View implements Runnable {
     }
 
     public void resetItems(){
-        PlayManager.fillGridCompactly();
+        //PlayManager.fillGridCompactly();
     }
 }

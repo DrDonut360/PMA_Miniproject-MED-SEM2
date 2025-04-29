@@ -43,7 +43,8 @@ public class PlayManager {
     private final int COLS = 5;
     private final int ROWS = 8;
     private Item[][] grid = new Item[ROWS][COLS];
-
+    // Singleton instance
+    private static PlayManager instance;
 
     //Contructor
     public PlayManager(View rootView){

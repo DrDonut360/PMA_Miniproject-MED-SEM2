@@ -7,6 +7,7 @@ import android.hardware.SensorManager;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
+import android.widget.RelativeLayout;
 
 public class GameActivity extends AppCompatActivity implements SensorEventListener {
     // this is the activity, it controls the activation adn deactivation methods.
@@ -23,10 +24,15 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        // Launch the panel as the content
+        // Load the XML layout
+        setContentView(R.layout.activity_game);
+        RelativeLayout layout = findViewById(R.id.gameLayout_id);
         GamePanel gamePanel = new GamePanel(this);
-        setContentView(gamePanel);
+        layout.addView(gamePanel);
+
+//        // Launch the panel as the content
+//        GamePanel gamePanel = new GamePanel(this);
+//        setContentView(gamePanel);
 
         //Sensor
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
