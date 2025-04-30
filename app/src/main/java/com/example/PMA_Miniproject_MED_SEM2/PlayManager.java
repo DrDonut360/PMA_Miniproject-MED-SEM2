@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.text.DynamicLayout;
 import android.view.MotionEvent;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import java.util.ArrayList;
@@ -58,7 +59,7 @@ public class PlayManager {
         this.layout = layout;
         //this.rootView = rootView; //Passing in rootView for game activity
         //layout = rootView.findViewById(R.id.gameLayout_id); //finds view by id
-        RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) layout.getLayoutParams(); // we get the params of the layout view rootView
+        FrameLayout.LayoutParams params = (FrameLayout.LayoutParams) layout.getLayoutParams(); // we get the params of the layout view rootView
 
         left_x = (params.height/2) - (WIDTH/2);
         right_x = left_x + WIDTH;
