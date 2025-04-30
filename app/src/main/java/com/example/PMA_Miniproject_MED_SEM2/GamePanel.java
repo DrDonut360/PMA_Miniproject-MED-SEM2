@@ -2,6 +2,8 @@ package com.example.PMA_Miniproject_MED_SEM2;
 
 import android.graphics.Canvas;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.view.SurfaceHolder;
@@ -16,11 +18,9 @@ import android.graphics.Canvas;
 import android.view.View;
 
 public class GamePanel extends SurfaceView implements SurfaceHolder.Callback, Runnable {
-    // this handles how the game is displayed and run
-    //it also calls for the playmanager class.
     private Thread gameThread;
     private final int FPS = 60;
-    private PlayManager playManager; // call playmanager Class
+    private PlayManager playManager;
     private boolean isRunning;
 
     public GamePanel(Context context, RelativeLayout layout) {
@@ -38,7 +38,7 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback, Ru
 
     @Override
     public void run() {
-        double drawInterval = 1000000000/FPS;
+        double drawInterval = 1000000000 / FPS;
         double delta = 0;
         long lastTime = System.nanoTime();
         long currentTime;
@@ -66,8 +66,14 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback, Ru
         playManager.draw(canvas);
     }
 
-    public void resetItems(){
-        //PlayManager.fillGridCompactly();
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        if (event.getAction() == MotionEvent.ACTION_DOWN) {
+            Log.d("GamePanel", "Touch detected at: " + event.getX() + ", " + event.getY());
+            playManager.onTouchEvent(event); // Call PlayManager to handle the touch logic
+            return true;
+        }
+        return super.onTouchEvent(event);
     }
 
     @Override
@@ -76,17 +82,15 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback, Ru
     }
 
     @Override
-    public void surfaceChanged(@NonNull SurfaceHolder holder, int format, int width, int height) {
-
-    }
+    public void surfaceChanged(@NonNull SurfaceHolder holder, int format, int width, int height) {}
 
     @Override
     public void surfaceDestroyed(@NonNull SurfaceHolder holder) {
         boolean retry = true;
-        isRunning = false; // Stop the game loop when the surface is destroyed
+        isRunning = false;
         while (retry) {
             try {
-                gameThread.join(); // Wait for the game thread to finish
+                gameThread.join();
                 retry = false;
             } catch (InterruptedException e) {
                 e.printStackTrace();
@@ -94,3 +98,4 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback, Ru
         }
     }
 }
+

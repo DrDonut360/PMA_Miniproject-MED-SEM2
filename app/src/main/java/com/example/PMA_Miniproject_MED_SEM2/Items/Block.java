@@ -4,6 +4,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 
@@ -20,6 +21,10 @@ public class Block { // basic item bounds contruct
          paint.setStyle(Paint.Style.FILL);
     }
       public void draw(@NonNull Canvas canvas) {
-         canvas.drawRect(x, y, x + width, y + height, paint);
+        Log.d("GamePanel", "Drawing block at: " + x + ", " + y); // Add log here
+        canvas.drawRect(x, y, x + width, y + height, paint);
+
+
+
      }
 }

@@ -4,6 +4,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.text.DynamicLayout;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
@@ -73,17 +74,17 @@ public class PlayManager {
         initialItems();
 
     }
-    public void initialItems(){ // is only called once when the game starts and when the backpack switches....
-        //Items.clear(); // clear the item list before use
-        int numItems = 7; // amount of items
-        int verticalOffset = Block.SIZE; // a vertical offset...
+    public void initialItems() {
+        Items.clear(); // Clear the item list before use
+        int numItems = 7; // Number of items
+        int verticalOffset = Block.SIZE; // Vertical offset between items
 
         for (int i = 0; i < numItems; i++) {
             currItem = Item.getRandomItem();
-            int x = left_x + new Random().nextInt(WIDTH - Block.SIZE); // Randomize X position (within the width of the game area)
-            int y = bottom_y - ((i + 1) * verticalOffset); // Randomize Y position, but keep it compact from the bottom upwards
+            int x = left_x + new Random().nextInt(WIDTH - Block.SIZE); // Randomize X position
+            int y = bottom_y - ((i + 1) * verticalOffset); // Stack items from bottom up
 
-            // Create new items and place them at the random positions and add to list
+            // Set the position for each block of the item
             currItem.setXY(x, y);
             Items.add(currItem);
         }
@@ -107,48 +108,43 @@ public class PlayManager {
                 paint
         );
 
-
+        Log.d("GamePanel", "Drawing game screen...");
+        // Draw all items
         if (Items != null) {
             for (Item item : Items) {
-                item.draw(canvas); //this canvas var, not item canvas var
+                item.draw(canvas); // Draw the item
             }
         }
 
-//        //Draw currItem
-//        if(currItem != null){
-//            currItem.draw(canvas);
-//        }
+        // Also ensure currItem is being drawn if it's set
+        if (currItem != null) {
+            currItem.draw(canvas);
+        }
     }
-    
-    public boolean onTouchEvent(MotionEvent event) { // checks if touch pos is inside the position of block of curItem
+
+    public boolean onTouchEvent(MotionEvent event) {
         if (event.getAction() == MotionEvent.ACTION_DOWN) {
+            Log.d("GamePanel", "Touch detected at: " + event.getX() + ", " + event.getY());
             float touchX = event.getX();
             float touchY = event.getY();
 
-            for (Block block : currItem.permB) {
-                if (touchX >= block.x && touchX <= block.x + Block.SIZE &&
-                        touchY >= block.y && touchY <= block.y + Block.SIZE) {
-                    stealItem();
-                    break;
-                }
+            // Check if the touch is within the bounds of the current item
+            if (currItem != null && currItem.contains(touchX, touchY)) {
+                stealItem(currItem);  // Pass currItem to stealItem()
             }
         }
         return true;
     }
 
-    private void stealItem() { //steal item method
-        // when item is pressed
-        int i = 0;
-        for (Item item : Items ) {
-            i++;
-            if (item == item){ // if item is the same as item pressed
-                Items.remove(i);
-            }
-        }
-        // Mark the item as stolen or remove it from the game.
-        // For example, you could change its color to gray, or remove it from the item list.
-        currItem = null; // Or handle it based on your logic
+    private void stealItem(Item item) {
+        Items.remove(item); // Remove the item from the Items list
+
+        // Mark the item as stolen or remove it from the game in other ways (e.g., set it to null or change its color).
+        // In this case, we set currItem to null after stealing it.
+        currItem = null;
+        Log.d("PlayManager", "Item stolen!");
     }
+
 //    public void draw(Graphics2D g2){
 //        g2.setColor(Color.WHITE);
 //        g2.setStroke(new BasicStroke(4f));

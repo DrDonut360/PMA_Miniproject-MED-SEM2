@@ -60,4 +60,14 @@ public class Item { // all items extent from this super class
             permB[i].draw(canvas);
         }
     }
+
+    public boolean contains(float touchX, float touchY) {
+        for (Block block : permB) {
+            if (touchX >= block.x && touchX <= block.x + Block.SIZE &&
+                    touchY >= block.y && touchY <= block.y + Block.SIZE) {
+                return true;  // Touch is inside this block
+            }
+        }
+        return false;  // No block contains the touch
+    }
 }

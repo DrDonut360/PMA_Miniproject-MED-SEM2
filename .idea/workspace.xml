@@ -22,7 +22,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7d6776a2-ee01-48ee-9f0b-78f1bc619b94" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/PMA_Miniproject_MED_SEM2/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/PMA_Miniproject_MED_SEM2/GamePanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/PMA_Miniproject_MED_SEM2/Items/Block.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/PMA_Miniproject_MED_SEM2/Items/Block.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/PMA_Miniproject_MED_SEM2/Items/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/PMA_Miniproject_MED_SEM2/Items/Item.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/PMA_Miniproject_MED_SEM2/PlayManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/PMA_Miniproject_MED_SEM2/PlayManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,7 +85,7 @@
     "RunOnceActivity.readMode.enableVisualFormatting": "true",
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
-    "git-widget-placeholder": "GameView",
+    "git-widget-placeholder": "NewGame",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/Tobias/Documents/GitHub/PMA_Miniproject-MED-SEM2",
     "settings.editor.selected.configurable": "reference.settingsdialog.IDE.editor.colors.Language Defaults"
@@ -177,12 +181,12 @@
       <map>
         <entry key="com.example.PMA_Miniproject_MED_SEM2">
           <value>
-            <CheckInfo lastCheckTimestamp="1745867341763" />
+            <CheckInfo lastCheckTimestamp="1746015868585" />
           </value>
         </entry>
         <entry key="com.example.PMA_Miniproject_MED_SEM2.test">
           <value>
-            <CheckInfo lastCheckTimestamp="1745867341767" />
+            <CheckInfo lastCheckTimestamp="1746015868584" />
           </value>
         </entry>
       </map>
