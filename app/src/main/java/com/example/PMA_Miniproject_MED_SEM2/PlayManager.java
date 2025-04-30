@@ -26,7 +26,7 @@ public class PlayManager {
 
     // _____ Main Play Area _____ \\ 8x5
     private RelativeLayout layout;
-    private View rootView;
+    //private View rootView;
     final int WIDTH = 150; // int WIDTH = COLS * Block.SIZE; //where 360 px
     final int HEIGHT = 240; // int WIDTH = COLS * Block.SIZE; //where 600 px
     public static int left_x;
@@ -34,11 +34,14 @@ public class PlayManager {
     public static int top_y;
     public static int bottom_y;
 
+    private Paint paint = new Paint();
+
     //Item stating variables
     Item currItem;
     //final int item_Start_x;
     //final int item_Start_y;
-    public ArrayList<Item> Items = new ArrayList<>(); //Arraylist of type item called  Items
+    public ArrayList<Item> Items = new ArrayList<>(); // list of items that change when things get stolen or when the game starts
+    public ArrayList<Item> tempItems = new ArrayList<>(); // list of items that is based on the OG list of items.
 
     private final int COLS = 5;
     private final int ROWS = 8;
@@ -47,11 +50,11 @@ public class PlayManager {
     private static PlayManager instance;
 
     //Contructor
-    public PlayManager(View rootView){
+    public PlayManager(View rootView, RelativeLayout layout){
         //Main play area frame
-
-        this.rootView = rootView; //Passing in rootView for game activity
-        layout = rootView.findViewById(R.id.gameLayout_id); //finds view by id
+        this.layout = layout;
+        //this.rootView = rootView; //Passing in rootView for game activity
+        //layout = rootView.findViewById(R.id.gameLayout_id); //finds view by id
         RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) layout.getLayoutParams(); // we get the params of the layout view rootView
 
         left_x = (params.height/2) - (WIDTH/2);
@@ -69,8 +72,8 @@ public class PlayManager {
         initialItems();
 
     }
-    public void initialItems(){
-        Items.clear(); // clear the item list before use
+    public void initialItems(){ // is only called once when the game starts and when the backpack switches....
+        //Items.clear(); // clear the item list before use
         int numItems = 7; // amount of items
         int verticalOffset = Block.SIZE; // a vertical offset...
 
@@ -87,9 +90,8 @@ public class PlayManager {
 
     public void update(){
         currItem.update(); // item update method
-
     }
-    private Paint paint = new Paint();
+
 
     public void draw(Canvas canvas) {
         paint.setColor(Color.WHITE);
@@ -134,6 +136,14 @@ public class PlayManager {
     }
 
     private void stealItem() { //steal item method
+        // when item is pressed
+        int i = 0;
+        for (Item item : Items ) {
+            i++;
+            if (item == item){ // if item is the same as item pressed
+                Items.remove(i);
+            }
+        }
         // Mark the item as stolen or remove it from the game.
         // For example, you could change its color to gray, or remove it from the item list.
         currItem = null; // Or handle it based on your logic
@@ -189,7 +199,8 @@ public class PlayManager {
     // we only want to remove items while iterating and so on in an temp, the removal of the original list should only happen after it has been stolen.
     public void fillGridCompactly() {
         // Clear old state
-        initialItems();//items.clear();
+        tempItems = Items;
+        //initialItems();//items.clear();
         for (int r = 0; r < ROWS; r++) {
             for (int c = 0; c < COLS; c++) {
                 grid[r][c] = null;
@@ -201,8 +212,8 @@ public class PlayManager {
             for (int col = 0; col < COLS; col++) {
 
                 // Try placing a random item in this position
-                for (int i = 0; i < Items.size(); i++){
-                    Item item = Items.get(i);
+                for (int i = 0; i < tempItems.size(); i++){
+                    Item item = tempItems.get(i);
                     item.setXY(colToX(col), rowToY(row));
                     if (canPlaceItem(item)) {
                         //items.add(item);

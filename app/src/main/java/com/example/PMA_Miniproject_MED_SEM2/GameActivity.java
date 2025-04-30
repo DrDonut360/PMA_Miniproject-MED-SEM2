@@ -27,7 +27,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
         // Load the XML layout
         setContentView(R.layout.activity_game);
         RelativeLayout layout = findViewById(R.id.gameLayout_id);
-        GamePanel gamePanel = new GamePanel(this);
+        GamePanel gamePanel = new GamePanel(this, layout);
         layout.addView(gamePanel);
 
 //        // Launch the panel as the content
