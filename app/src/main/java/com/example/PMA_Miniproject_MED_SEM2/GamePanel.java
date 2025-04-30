@@ -26,7 +26,9 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback, Ru
     public GamePanel(Context context, RelativeLayout layout) {
         super(context);
         getHolder().addCallback(this);
-        playManager = new PlayManager(this, layout); // Pass View if needed
+        //playManager = new PlayManager(this, layout); // Pass View if needed
+        PlayManager.initInstance(context, layout);
+        playManager = PlayManager.getInstance();
         launchGame();
     }
 

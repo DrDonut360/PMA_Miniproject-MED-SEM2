@@ -12,6 +12,10 @@ import android.widget.RelativeLayout;
 public class GameActivity extends AppCompatActivity implements SensorEventListener {
     // this is the activity, it controls the activation adn deactivation methods.
     // it also calls for the gamepanal class to be activated therfor the gameView.
+    // Create GamePanel and set it as the content
+
+
+
 
     //Sensor
     private SensorManager sensorManager;
@@ -24,6 +28,8 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // Get PlayManager instance
+        //PlayManager playManager = PlayManager.getInstance();
         // Load the XML layout
         setContentView(R.layout.activity_game);
         RelativeLayout layout = findViewById(R.id.gameLayout_id);
@@ -81,7 +87,16 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
     // Method to reset items when shake is detected
     private void resetItems() {
         // Call your reset logic here to reposition items
-        //playManager.resetItems();
+        PlayManager playManager = PlayManager.getInstance();
+        if (playManager != null) {
+            playManager.fillGridCompactly();
+        }
+    }
+
+    @Override
+    private void OnDestroy(){ // can also be onStop() or finish()
+        // stop sensor datastream
+
     }
 }
 

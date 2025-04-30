@@ -1,5 +1,6 @@
 package com.example.PMA_Miniproject_MED_SEM2;
 
+import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -19,6 +20,7 @@ import com.example.PMA_Miniproject_MED_SEM2.Items.Item;
 import com.example.PMA_Miniproject_MED_SEM2.Items.Item_L1;
 
 public class PlayManager {
+    private final Context context;
     // Handles all the game logic in terms of :
     // The Drawing of the play area
     // Manages the game pieces / items
@@ -50,8 +52,9 @@ public class PlayManager {
     private static PlayManager instance;
 
     //Contructor
-    public PlayManager(View rootView, RelativeLayout layout){
+    public PlayManager(Context context, RelativeLayout layout){
         //Main play area frame
+        this.context = context;
         this.layout = layout;
         //this.rootView = rootView; //Passing in rootView for game activity
         //layout = rootView.findViewById(R.id.gameLayout_id); //finds view by id
@@ -72,6 +75,16 @@ public class PlayManager {
         initialItems();
 
     }
+    public static PlayManager getInstance() {
+        return instance; // returns that instance from anywhere
+    }
+    // Static method to get the singleton instance
+    public static void initInstance(Context context, RelativeLayout layout) {
+        if (instance == null) {
+            instance = new PlayManager(context, layout);  // Pass the rootView when creating the first instance
+        }
+    }
+
     public void initialItems(){ // is only called once when the game starts and when the backpack switches....
         //Items.clear(); // clear the item list before use
         int numItems = 7; // amount of items
