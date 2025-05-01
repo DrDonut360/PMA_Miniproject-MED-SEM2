@@ -22,8 +22,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7d6776a2-ee01-48ee-9f0b-78f1bc619b94" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/PMA_Miniproject_MED_SEM2/Items/Item_L2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/PMA_Miniproject_MED_SEM2/Items/Item_T.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/PMA_Miniproject_MED_SEM2/Items/Item_Z1.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/PMA_Miniproject_MED_SEM2/Items/Item_Z2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/caches/deviceStreaming.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/PMA_Miniproject_MED_SEM2/GameActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/PMA_Miniproject_MED_SEM2/GameActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/PMA_Miniproject_MED_SEM2/Items/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/PMA_Miniproject_MED_SEM2/Items/Item.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/PMA_Miniproject_MED_SEM2/Items/LShapedItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/PMA_Miniproject_MED_SEM2/Items/Item_L1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/PMA_Miniproject_MED_SEM2/Items/LineItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/PMA_Miniproject_MED_SEM2/Items/Item_I.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/PMA_Miniproject_MED_SEM2/Items/SquareItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/PMA_Miniproject_MED_SEM2/Items/Item_O.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,7 +42,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=PhysicalDevice, isTemplate=false, identifier=serial=RFCR40AWFHT)]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=LocalEmulator, isTemplate=false, identifier=path=C:\Users\Tobias\.android\avd\Medium_Phone.avd)]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />

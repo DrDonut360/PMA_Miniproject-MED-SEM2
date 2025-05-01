@@ -16,9 +16,13 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.PMA_Miniproject_MED_SEM2.Items.Item;
-import com.example.PMA_Miniproject_MED_SEM2.Items.LShapedItem;
-import com.example.PMA_Miniproject_MED_SEM2.Items.LineItem;
-import com.example.PMA_Miniproject_MED_SEM2.Items.SquareItem;
+import com.example.PMA_Miniproject_MED_SEM2.Items.Item_L1;
+import com.example.PMA_Miniproject_MED_SEM2.Items.Item_I;
+import com.example.PMA_Miniproject_MED_SEM2.Items.Item_L2;
+import com.example.PMA_Miniproject_MED_SEM2.Items.Item_O;
+import com.example.PMA_Miniproject_MED_SEM2.Items.Item_T;
+import com.example.PMA_Miniproject_MED_SEM2.Items.Item_Z1;
+import com.example.PMA_Miniproject_MED_SEM2.Items.Item_Z2;
 
 import java.util.*;
 
@@ -150,9 +154,13 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
 
     // Adds available item shapes to the pool
     private void initializeItemPool() {
-        itemPool.add(new LShapedItem());
-        itemPool.add(new LineItem());
-        itemPool.add(new SquareItem());
+        itemPool.add(new Item_L1());
+        itemPool.add(new Item_L2());
+        itemPool.add(new Item_I());
+        itemPool.add(new Item_O());
+        itemPool.add(new Item_Z1());
+        itemPool.add(new Item_Z2());
+        itemPool.add(new Item_T());
     }
 
     // Attempts to place items randomly until grid is ~55% full
@@ -172,8 +180,9 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
             for (int attempt = 0; attempt < 100 && !placed; attempt++) {
                 int anchorRow = rand.nextInt(rows); // Pick a random cell
                 int anchorCol = rand.nextInt(columns);
+                int rotation = rand.nextInt(4);
 
-                List<int[]> shape = item.getShapeOffsets(); // Item's shape pattern
+                List<int[]> shape = item.getShapeOffsets(rotation); // Item's shape pattern
                 List<int[]> absPositions = new ArrayList<>(); // Holds final positions of shape
                 boolean fits = true;
 
