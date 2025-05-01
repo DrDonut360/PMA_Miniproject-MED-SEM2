@@ -9,11 +9,15 @@ import java.util.List;
 public class Item_L1 extends Item {
     @Override
     public List<int[]> getBaseShape() {
-        // L Shape
-        // [ ] [x] [ ] [ ]
-        // [ ] [x] [ ] [ ]
-        // [ ] [x] [x] [ ]
-        // [ ] [ ] [ ] [ ]
+
+        // ------- SHAPE ------- \\
+        //                       \\
+        //        [ ] [ ]        \\
+        //        [ ]            \\
+        //        [0]            \\
+        //                       \\
+        // --------------------- \\
+
         return Arrays.asList(
             new int[]{0, 0},   // anchor
             new int[]{1, 0},

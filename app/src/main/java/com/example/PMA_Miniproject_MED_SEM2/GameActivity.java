@@ -17,7 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.PMA_Miniproject_MED_SEM2.Items.Item;
 import com.example.PMA_Miniproject_MED_SEM2.Items.Item_L1;
-import com.example.PMA_Miniproject_MED_SEM2.Items.Item_I;
+//import com.example.PMA_Miniproject_MED_SEM2.Items.Item_I;
 import com.example.PMA_Miniproject_MED_SEM2.Items.Item_L2;
 import com.example.PMA_Miniproject_MED_SEM2.Items.Item_O;
 import com.example.PMA_Miniproject_MED_SEM2.Items.Item_T;
@@ -39,13 +39,16 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
     private int score = 0;
     private List<Item> itemPool = new ArrayList<>();
     private boolean[][] occupied = new boolean[rows][columns];
+    private int MarginGenPx = 4;
 
     // Sensor variables
     private SensorManager sensorManager;
     private Sensor accelerometer;
     private float lastX, lastY, lastZ;
     private long lastUpdate;
-    private static final int SHAKE_THRESHOLD = 800;
+    private long lastShakeUpdate;
+    private static final int SHAKE_THRESHOLD = 3000;
+    private static final int SHAKE_COOLDOWN_THRESHOLD = 2000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,28 +58,41 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
         scoreText = findViewById(R.id.scoreText);
         gridLayout = findViewById(R.id.gridLayout);
 
-        // Get screen dimensions
-        DisplayMetrics displayMetrics = new DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
-        int screenWidth = displayMetrics.widthPixels;
-        int screenHeight = displayMetrics.heightPixels;
+        // Wait until GridLayout is laid out to get its real dimensions
+        gridLayout.post(() -> {
 
-        // Calculate tile sizes
-        int tileWidth = screenWidth / columns;
-        int tileHeight = screenHeight / (rows + 2);
 
-        int maxTileSize = 150;
-        tileWidth = Math.min(tileWidth, maxTileSize);
-        tileHeight = Math.min(tileHeight, maxTileSize);
+            // Get screen dimensions and reduce it with the margins that is going to be present on each tile
+            int availableWidth = gridLayout.getWidth() - columns * MarginGenPx;
+            int availableHeight = gridLayout.getHeight() - columns * MarginGenPx;
 
-        // Set up the grid layout with desired dimensions
-        gridLayout.setRowCount(rows);
-        gridLayout.setColumnCount(columns);
+            /*
+            DisplayMetrics displayMetrics = new DisplayMetrics();
+            getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+            int screenWidth = displayMetrics.widthPixels;
+            int screenHeight = displayMetrics.heightPixel;
+             */
 
-        gridCells = new View[rows][columns];
-        createEmptyGrid(tileWidth, tileHeight); // Builds and shows the grid
-        initializeItemPool(); // Adds items to choose from
-        placeItems(); // Randomly places items in the grid
+            // Calculate tile sizes
+            int tileWidth = availableWidth / columns;
+            int tileHeight = availableHeight / (rows + 2);
+
+            int maxTileSize = 150;
+            tileWidth = Math.min(tileWidth, maxTileSize);
+            tileHeight = Math.min(tileHeight, maxTileSize);
+
+            // Set up the grid layout with desired dimensions
+            gridLayout.setRowCount(rows);
+            gridLayout.setColumnCount(columns);
+
+            gridCells = new View[rows][columns];
+            createEmptyGrid(tileWidth, tileHeight); // Builds and shows the grid
+            initializeItemPool(); // Adds items to choose from
+            placeItems(); // Randomly places items in the grid
+
+        });
+
+
 
         // Prepare sensor for shake detection
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
@@ -103,7 +119,11 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
 
                 // Check if speed crosses the shake threshold
                 if (speed > SHAKE_THRESHOLD) {
-                    rearrangeItems(); // Shuffle grid on shake
+                    long now = System.currentTimeMillis();
+                    if (now - lastShakeUpdate > SHAKE_COOLDOWN_THRESHOLD) {
+                        lastShakeUpdate = now;  // Reset cooldown
+                        rearrangeItems();     // Shuffle grid on shake after cooldown
+                    }
                 }
 
                 // Save current values for the next comparison
@@ -139,11 +159,12 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
         for (int row = 0; row < rows; row++) {
             // Inner loop creates each column within the row
             for (int col = 0; col < columns; col++) {
+                int margin = MarginGenPx / 2;
                 View cell = new View(this); // A blank tile
                 GridLayout.LayoutParams params = new GridLayout.LayoutParams();
                 params.width = tileWidth;
                 params.height = tileHeight;
-                params.setMargins(2, 2, 2, 2);
+                params.setMargins(margin, margin, margin, margin);
                 cell.setLayoutParams(params);
                 cell.setBackgroundColor(Color.LTGRAY); // Default background
                 gridLayout.addView(cell); // Add to grid
@@ -156,7 +177,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
     private void initializeItemPool() {
         itemPool.add(new Item_L1());
         itemPool.add(new Item_L2());
-        itemPool.add(new Item_I());
+        //itemPool.add(new Item_I());
         itemPool.add(new Item_O());
         itemPool.add(new Item_Z1());
         itemPool.add(new Item_Z2());

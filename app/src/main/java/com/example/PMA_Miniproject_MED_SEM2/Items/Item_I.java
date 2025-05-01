@@ -8,11 +8,15 @@ import java.util.List;
 public class Item_I extends Item {
     @Override
     public List<int[]> getBaseShape() {
-        // Line Shape
-        // [ ] [x] [ ] [ ]
-        // [ ] [x] [ ] [ ]
-        // [ ] [x] [ ] [ ]
-        // [ ] [x] [ ] [ ]
+
+        // ------- SHAPE ------- \\
+        //                       \\
+        //        [ ]            \\
+        //        [ ]            \\
+        //        [ ]            \\
+        //        [0]            \\
+        //                       \\
+        // --------------------- \\
         return Arrays.asList(
                 new int[]{0, 0},
                 new int[]{1, 0},

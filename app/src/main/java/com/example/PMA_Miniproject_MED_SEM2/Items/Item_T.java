@@ -9,6 +9,13 @@ import java.util.List;
 public class Item_T extends Item{
     @Override
     public List<int[]> getBaseShape() {
+        // ------- SHAPE ------- \\
+        //                       \\
+        //              [ ]      \\
+        //      [0] [ ] [ ]      \\
+        //              [ ]      \\
+        //                       \\
+        // --------------------- \\
         return Arrays.asList(
                 new int[]{0, 0},
                 new int[]{0, 1},
